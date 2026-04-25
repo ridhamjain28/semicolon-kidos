@@ -16,6 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(iblm.router)
+
 @app.get("/")
 async def root():
     return {
