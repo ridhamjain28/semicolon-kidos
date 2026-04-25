@@ -19,32 +19,54 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-purple-50 p-8 font-sans">
-      <div className="max-w-4xl mx-auto">
-        <header className="flex justify-between items-center mb-12">
-            <h1 className="text-4xl font-bold text-purple-800">🚀 KidOS</h1>
-            <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-purple-200"></div>
+    <div className="min-h-screen p-6 md:p-12">
+      <div className="max-w-5xl mx-auto">
+        <header className="flex justify-between items-center mb-16 animate-pop">
+            <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-3xl bg-gradient-to-tr from-purple-600 to-pink-500 text-white flex items-center justify-center text-3xl shadow-xl transform rotate-3">
+                    🌟
+                </div>
+                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+                    Kid<span className="text-purple-600">OS</span>
+                </h1>
+            </div>
+            <div className="flex items-center gap-4 glass-card px-4 py-2 rounded-2xl">
+                <span className="font-bold text-purple-700">Explorer Points: 150 ⭐</span>
             </div>
         </header>
         
         <main>
-            <div className="bg-white p-8 rounded-[40px] shadow-xl border-4 border-purple-100 mb-12 text-center">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Ready for a new adventure?</h2>
+            <div className="glass-card p-10 md:p-16 rounded-[50px] mb-16 text-center border-white/50 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-right from-purple-500 to-pink-500"></div>
+                <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                    Where shall we <span className="text-gradient">explore</span> today?
+                </h2>
+                <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto font-medium">
+                    The universe is full of mysteries waiting for a curious explorer like you!
+                </p>
                 <button 
                     onClick={startLearning}
                     disabled={loading}
-                    className="bg-purple-600 text-white px-10 py-4 rounded-2xl shadow-lg hover:bg-purple-700 transition font-bold text-lg disabled:opacity-50"
+                    className="bg-purple-600 text-white px-12 py-5 rounded-[24px] kid-shadow hover:bg-purple-700 transition-all font-black text-xl disabled:opacity-50 active:scale-95"
                 >
-                    {loading ? "Discovering..." : "Start Exploring Space!"}
+                    {loading ? "Discovering..." : "Launch to Space! 🚀"}
                 </button>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {content.map((card, i) => (
-                <div key={i} className="bg-white p-8 rounded-3xl shadow-lg border-2 border-purple-100 hover:scale-[1.02] transition-transform cursor-pointer">
-                    <h2 className="text-2xl font-bold text-purple-700 mb-3">{card.title}</h2>
-                    <p className="text-gray-600 text-lg leading-relaxed">{card.body}</p>
+                <div 
+                    key={i} 
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                    className="glass-card p-10 rounded-[40px] animate-pop hover:scale-[1.03] transition-all cursor-pointer group relative"
+                >
+                    <div className="absolute top-6 right-8 text-4xl opacity-20 group-hover:opacity-100 transition-opacity">🛸</div>
+                    <h2 className="text-2xl font-black text-purple-800 mb-4 pr-12">{card.title}</h2>
+                    <p className="text-gray-700 text-lg leading-relaxed font-medium">{card.body}</p>
+                    <div className="mt-8 flex gap-3">
+                        <span className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-bold">Science</span>
+                        <span className="px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-bold">Space</span>
+                    </div>
                 </div>
                 ))}
             </div>

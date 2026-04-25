@@ -2,12 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #faf5ff;
-  --foreground: #1a1a1a;
+@layer base {
+  body {
+    background: radial-gradient(circle at top left, #f3e8ff, #faf5ff 50%, #e0e7ff 100%);
+    min-h-screen;
+    color: #1e1b4b;
+    font-family: 'Lexend', sans-serif;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
+}
+
+.kid-shadow {
+  box-shadow: 0 10px 0px 0px rgba(139, 92, 246, 0.2);
+}
+
+.kid-shadow:active {
+  box-shadow: 0 2px 0px 0px rgba(139, 92, 246, 0.2);
+  transform: translateY(8px);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-pop {
+  animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #7c3aed, #db2777);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
